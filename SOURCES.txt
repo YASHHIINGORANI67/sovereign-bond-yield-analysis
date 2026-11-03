@@ -1,0 +1,5 @@
+DATASET SOURCES:
+
+1. Bond Yields: World Government Bonds (www.worldgovernmentbonds.com)
+2. Macro Data: IMF World Economic Outlook Database (www.imf.org)
+3. Ratings: S&P Global Ratings (www.spglobal.com)
