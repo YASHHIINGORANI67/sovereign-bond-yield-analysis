@@ -1,59 +1,77 @@
 # Sovereign Bond Yield Analysis
 
-### Econometric Modelling | Fixed Income | Python | Statistical Analysis
+**Econometrics | Fixed income | Sovereign credit risk | Python | Cross-sectional OLS**
 
-## Project Overview
+## Overview
 
-This project investigates the macroeconomic and credit-related determinants of 10-year sovereign government bond yields across 50 countries using cross-sectional econometric analysis.
+This project investigates associations between **10-year sovereign government bond yields** and macroeconomic or credit-related characteristics across a **50-country cross-sectional sample**.
 
-The analysis examines how sovereign credit ratings, inflation, and government debt influence borrowing costs, applying Ordinary Least Squares (OLS) regression and statistical diagnostic tests.
+The study considers sovereign credit ratings, inflation and government debt using exploratory analysis, Ordinary Least Squares (OLS) regression and statistical diagnostics.
 
-## Objectives
+> **Evidence note:** The descriptive sample statistics below were previously calculated from the repository dataset for the portfolio. They are historical observations, **not live bond quotations**. Regression coefficients and p-values are not independently verified in this README.
 
-- Identify the main determinants of sovereign bond yields.
-- Examine the relationship between credit ratings, inflation, government debt, and yields.
-- Estimate and evaluate cross-sectional regression models.
-- Test model assumptions and investigate potential specification problems.
-- Develop an improved regression specification and interpret the results.
+## Research question
 
-## Dataset
+**How are sovereign 10-year yields associated with credit ratings, inflation and public debt in the 50-country sample?**
 
-The dataset contains observations for 50 countries, including:
+## Data and variables
 
-- 10-year sovereign bond yields
-- Government debt-to-GDP ratios
-- Inflation rates
-- Numerical sovereign credit ratings
+| Variable | Role |
+|---|---|
+| 10-year sovereign bond yield | Dependent variable |
+| Numerical sovereign credit rating | Explanatory variable; coding direction must be checked |
+| Inflation rate | Explanatory variable |
+| Government debt-to-GDP ratio | Explanatory variable |
 
-Data source references are provided in `SOURCES.txt`.
+The dataset covers 50 countries. Original data references are listed in `SOURCES.txt`; consult that file for source provenance and coverage.
 
-## Methodology
+## Descriptive sample results
 
-**1. Exploratory Data Analysis**
+| Statistic | Historical sample value |
+|---|---:|
+| Countries | 50 |
+| Mean 10-year yield | 7.78% |
+| Median 10-year yield | 4.30% |
+| Minimum yield | 0.90% |
+| Maximum yield | 55.00% |
 
-Examined yield distributions, cross-country differences, and relationships between macroeconomic variables.
+The gap between the mean and median and the high maximum indicate that unusually high-yield observations warrant attention in model diagnostics. These summary statistics alone do not establish the direction or statistical significance of any explanatory relationship.
 
-**2. OLS Regression**
+## Empirical approach
 
-Estimated an initial multiple linear regression model to evaluate the association between sovereign yields and the explanatory variables.
+1. **Exploratory data analysis:** Review distributions, country-level differences and bivariate relationships.
+2. **OLS regression:** Estimate cross-sectional associations between yields, ratings, inflation and public debt.
+3. **Model diagnostics:** Examine assumptions and specification using the tests reported in the project:
+   - **Ramsey RESET** — functional form and specification.
+   - **Breusch–Pagan** — heteroskedasticity.
+   - **Jarque–Bera** — residual normality.
+4. **Interpretation:** Evaluate the direction, scale and uncertainty of estimated relationships, with attention to rating coding and influential countries.
 
-**3. Regression Diagnostics**
+## Reproduction guidance
 
-Applied statistical tests and visual diagnostics, including:
+1. Review the repository dataset and `SOURCES.txt` to confirm variable definitions, sources and units.
+2. Locate the original Python analysis script in the repository and inspect its imports and input paths.
+3. Install the dependencies required by that script, then run it locally against the supplied dataset.
+4. Compare descriptive statistics and regression output with the academic materials.
+5. Record package versions, missing-value treatment and any data transformations for repeatability.
 
-- Ramsey RESET test for model specification
-- Breusch–Pagan test for heteroskedasticity
-- Jarque–Bera test for residual normality
+A pinned environment, automated tests and an independently verified coefficient table are **not established** here.
 
----
+## Validation roadmap
 
-## Research question and evidence
-How are sovereign 10-year yields associated with ratings, inflation and public debt in the 50-country cross-sectional sample?
+**Recommended checks — not independently confirmed results:**
+- Report OLS coefficients, standard errors, confidence intervals and p-values from a reproducible run.
+- Check the direction and ordinal interpretation of the numeric credit-rating scale.
+- Review RESET, Breusch–Pagan and Jarque–Bera outcomes.
+- Consider heteroskedasticity-robust standard errors and influential-observation diagnostics.
+- Examine the effect of high-yield countries and alternative model specifications.
 
-**Descriptive sample:** 50 countries; mean yield 7.78%; median 4.30%; minimum 0.90%; maximum 55.0%, as calculated from the repository dataset for the portfolio. These are historical dataset values, not live bond quotations.
+## Limitations
 
-**Reproduction:** inspect the dataset and `SOURCES.txt`, identify the original Python analysis script, install its documented dependencies, then run it locally. Verify units and the direction of the numerical credit-rating scale before interpreting coefficients.
+A 50-country cross-section supports **associational**, not causal, inference. Omitted factors, cross-country heterogeneity, rating endogeneity, outliers and measurement differences may affect the estimates. Findings should not be interpreted as real-time forecasts or investment recommendations.
 
-**Validation checklist:** report coefficient estimates, standard errors, confidence intervals and p-values from a reproducible run; review Ramsey RESET, Breusch–Pagan and Jarque–Bera diagnostics; assess influential observations and robust standard errors. No independently verified regression coefficients are asserted here.
+## Tools and related work
 
-**Limitations:** a small cross-sectional sample supports association analysis, not causal identification.
+**Tools:** Python · OLS regression · Econometric diagnostics · Sovereign fixed-income analysis
+
+**Portfolio:** [Financial Risk Research — Yash Hingorani](https://yashhiingorani67.github.io/) · [LinkedIn](https://www.linkedin.com/in/yashhingorani)
