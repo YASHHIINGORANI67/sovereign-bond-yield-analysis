@@ -94,3 +94,11 @@ python Final_bond_analysis.py
 The tests check the CSV column names, 50 unique countries, finite positive numeric inputs needed for logarithms, and documented descriptive yield statistics. **They do not test coefficient accuracy, statistical significance, forecast performance or the validity of the source observations.**
 
 **Execution caveat:** The original script embeds its own 50-country CSV text rather than reading `bond_yield_data.csv`. Its charts open interactive windows and its final `input()` prompt requires user interaction; run it locally in a graphical environment. The dependency manifest specifies compatible version ranges based on imports, not a tested lockfile. Automated execution of the full analysis has not been verified here. The script's statements that transformations “fix” diagnostics should be treated as hypotheses requiring post-transformation diagnostic tests, not established facts.
+
+### Automated model diagnostics (new)
+
+- [`validate_model.py`](validate_model.py) reads the version-controlled CSV and fits a baseline OLS model with HC3-robust inference, RESET, Breusch–Pagan, Jarque–Bera and Cook's-distance diagnostics.
+- [GitHub Actions research checks](.github/workflows/research-checks.yml) are configured to run the dataset tests and diagnostic script on applicable pushes, pull requests and manual dispatch.
+- Run locally with `python validate_model.py` after installing `requirements.txt`.
+
+**Verification distinction:** The CSV's 50 rows, uniqueness, positivity and reported descriptive yield statistics were checked against the repository data during this update. The full statistical pipeline and CI workflow have not yet been observed completing successfully. Diagnostic output is evidence about this sample, not out-of-sample model validation.
