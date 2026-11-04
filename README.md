@@ -75,3 +75,22 @@ A 50-country cross-section supports **associational**, not causal, inference. Om
 **Tools:** Python · OLS regression · Econometric diagnostics · Sovereign fixed-income analysis
 
 **Portfolio:** [Financial Risk Research — Yash Hingorani](https://yashhiingorani67.github.io/) · [LinkedIn](https://www.linkedin.com/in/yashhingorani)
+
+## Reproducible environment and data checks
+
+The repository now includes a [dependency manifest](requirements.txt) derived from the imports in `Final_bond_analysis.py` and a [standard-library data-integrity test suite](tests/test_dataset.py).
+
+From the repository root, using a supported Python 3 environment:
+
+```bash
+python -m venv .venv
+# Windows: .venv\\Scripts\\activate
+# macOS/Linux: source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python Final_bond_analysis.py
+```
+
+The tests check the CSV column names, 50 unique countries, finite positive numeric inputs needed for logarithms, and documented descriptive yield statistics. **They do not test coefficient accuracy, statistical significance, forecast performance or the validity of the source observations.**
+
+**Execution caveat:** The original script embeds its own 50-country CSV text rather than reading `bond_yield_data.csv`. Its charts open interactive windows and its final `input()` prompt requires user interaction; run it locally in a graphical environment. The dependency manifest specifies compatible version ranges based on imports, not a tested lockfile. Automated execution of the full analysis has not been verified here. The script's statements that transformations “fix” diagnostics should be treated as hypotheses requiring post-transformation diagnostic tests, not established facts.
