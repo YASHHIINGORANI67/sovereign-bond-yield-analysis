@@ -44,3 +44,16 @@ Applied statistical tests and visual diagnostics, including:
 - Ramsey RESET test for model specification
 - Breusch–Pagan test for heteroskedasticity
 - Jarque–Bera test for residual normality
+
+---
+
+## Research question and evidence
+How are sovereign 10-year yields associated with ratings, inflation and public debt in the 50-country cross-sectional sample?
+
+**Descriptive sample:** 50 countries; mean yield 7.78%; median 4.30%; minimum 0.90%; maximum 55.0%, as calculated from the repository dataset for the portfolio. These are historical dataset values, not live bond quotations.
+
+**Reproduction:** inspect the dataset and `SOURCES.txt`, identify the original Python analysis script, install its documented dependencies, then run it locally. Verify units and the direction of the numerical credit-rating scale before interpreting coefficients.
+
+**Validation checklist:** report coefficient estimates, standard errors, confidence intervals and p-values from a reproducible run; review Ramsey RESET, Breusch–Pagan and Jarque–Bera diagnostics; assess influential observations and robust standard errors. No independently verified regression coefficients are asserted here.
+
+**Limitations:** a small cross-sectional sample supports association analysis, not causal identification.
